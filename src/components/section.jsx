@@ -1,7 +1,5 @@
 import React from 'react';
 
-import List from "../data/list";
-
 import "./style.css";
 
 const Item = (props) => {
@@ -12,11 +10,13 @@ const Section = (props) => {
     return (
         <section className="section">
             <h1 className="list">{props.elem.name}</h1>
-            <div className="list-item">{
-                List
-                    .filter(elem => elem.field === props.elem.id)
-                    .map(elem => Item(elem))
-            }</div>
+            <div className="list-item">
+                {
+                    props.list
+                        .filter(elem => elem.field === props.elem.id)
+                        .map(elem => Item(elem))
+                }
+            </div>
         </section>
     )
 }

@@ -38,3 +38,17 @@ padding: 20px;
     padding-left: 2px; 
     border-radius: 2px;
  }
+
+ .search {
+    display: flex;
+    flex-wrap: wrap;
+width: 275px;
+height: 35px;
+border-radius: 2px;
+margin: 30px;
+margin-bottom: 0;
+background-color:rgb(240, 239, 239); 
+color: rgb(56, 56, 56);
+font-style: italic;
+font-size: 16px;
+ }
