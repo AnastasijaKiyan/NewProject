@@ -4,6 +4,8 @@ import Category from "./data/category";
 import Input from "./components/input";
 import List from "./data/list";
 
+let visible = false;
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,12 +15,11 @@ class App extends Component {
     this.filterList = this.filterList.bind(this);
 }
 
-
-
   filterList(text) {
     var filteredList = List.filter(list => list["name"].toLowerCase().search(text.toLowerCase()) !== -1); 
     this.setState({list: filteredList});
 }
+
 
   render() {
     return (
@@ -27,6 +28,7 @@ class App extends Component {
         <div className="App">
           {
             Category.map(elem => <Section key={elem.id} elem={elem} list={this.state.list}/>)
+
           }
         </div>
       </div>

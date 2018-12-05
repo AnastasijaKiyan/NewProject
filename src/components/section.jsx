@@ -7,18 +7,27 @@ const Item = (props) => {
 }
 
 const Section = (props) => {
+    const items = props.list
+        .filter(elem => elem.field === props.elem.id)
+        .map(elem => Item(elem));
+    console.log(items.length, props.elem.name)
+    if (items.length < 1) return null;
     return (
         <section className="section">
-            <h1 className="list">{props.elem.name}</h1>
+            <h1 className="list">
+                {
+                    props.elem.name
+                }
+            </h1>
             <div className="list-item">
                 {
-                    props.list
-                        .filter(elem => elem.field === props.elem.id)
-                        .map(elem => Item(elem))
+                    items
                 }
             </div>
+
         </section>
     )
 }
+
 
 export default Section;
