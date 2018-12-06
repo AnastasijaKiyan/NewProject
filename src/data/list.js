@@ -3,18 +3,24 @@ export default [
         "id": 0,
         "name": "Node.js",
         "adress": "https://nodejs.org/dist/latest-v7.x/docs/api/",
+        "tags": ["ttttt", "node", "js", "javascript", "official"],
+        "lang": "en",
         "field": 1
     },
     {
         "id": 1,
         "name": "Webpack",
         "adress": "https://webpack.github.io/docs/",
+        "tags": ["node", "js", "javascript", "official", "lib", "library", "bundler"],
+        "lang": "ru",
         "field": 1
     },
     {
         "id": 2,
         "name": "Sass",
         "adress": "http://sass-scss.ru/documentation/",
+        "tags": ["style", "preprocessor", "css", "official"],
+        "lang": "en",
         "field": 1
     },
     {
