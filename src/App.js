@@ -3,51 +3,35 @@ import Section from "./components/section";
 import Category from "./data/category";
 import Input from "./components/input";
 import Checkbox from "./components/checkbox";
-import List from "./data/list";
 
+import * as Controller from "./controller";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      list: List,
-      
-    
+      list: Controller.list,
     };
 
     this.filterList = this.filterList.bind(this);
+    Controller.subscribe(this.filterList);
   }
 
-  filterList(text) {
-    const list = List.filter(elem => {
-      if (elem["name"].toLowerCase().search(text.toLowerCase()) > -1) {
-        return true;
-      } else if (elem.tags && elem.tags.length > 0) {
-        for (let i = 0; elem.tags.length > i; i++) {
-          const tag = elem.tags[i];
-          if (tag.toLowerCase().search(text.toLowerCase()) > -1) {
-            return true;
-          }
-        }
-        return false;
-      } else return false;
-    });
-
-    this.setState({ list });
-
+  filterList() {
+    this.setState({ list: Controller.list });
   }
-
 
   render() {
     return (
-      <div>
-        <Input filter={this.filterList} />
-        <Checkbox />
+      <div >
+        <div className="inputs">
+          <div className="input"><Input /></div>
+          <div className="checbox"><Checkbox /></div>
+        </div>
         <div className="App">
           {
             Category.map(elem => <Section key={elem.id} elem={elem} list={this.state.list} />)
-
           }
         </div>
       </div>

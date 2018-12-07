@@ -22,7 +22,8 @@ a:hover {
 color: brown;
 }
 
-.App {
+.App,
+.inputs {
 display: flex;
 flex-wrap: wrap;
 padding: 20px;
@@ -51,4 +52,11 @@ background-color:rgb(240, 239, 239);
 color: rgb(56, 56, 56);
 font-style: italic;
 font-size: 16px;
+ }
+
+ .checbox {
+width: 500px;
+height: 35px;
+margin: 30px;
+margin-bottom: 0;
  }

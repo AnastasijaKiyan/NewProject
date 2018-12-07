@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import "./style.css";
 
+import * as Controller from "./../controller";
+
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +11,7 @@ class Input extends Component {
 
   onTextChanged(e) {
     var text = e.target.value.trim();   // удаляем пробелы
-    this.props.filter(text); // передаем введенный текст в родительский компонент
+    Controller.onSearch(text);
   }
 
   render() {
