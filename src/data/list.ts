@@ -1,4 +1,6 @@
-export default [
+import { List } from '../contracts';
+
+export let Lists: List[] = [
     {
         "id": 0,
         "name": "Node.js",
