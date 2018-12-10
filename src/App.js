@@ -10,19 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      list: Controller.list,
-    };
-
-    this.filterList = this.filterList.bind(this);
-    Controller.subscribe(this.filterList);
-  }
-
-  filterList() {
-    this.setState({ list: Controller.list });
+     Controller.store.subscribe(() => this.forceUpdate());
   }
 
   render() {
+    const list = Controller.store.getState().list;
     return (
       <div >
         <div className="inputs">
@@ -31,7 +23,7 @@ class App extends Component {
         </div>
         <div className="App">
           {
-            Category.map(elem => <Section key={elem.id} elem={elem} list={this.state.list} />)
+            Category.map(elem => <Section key={elem.id} elem={elem} list={list} />)
           }
         </div>
       </div>

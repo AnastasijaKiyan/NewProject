@@ -1,40 +1,18 @@
 import List from "./data/list";
+import { createStore } from 'redux';
+
+
+export let list = List;
+
+const initialState = { list: List };
 
 export const condition = {
     search: "", // "git"
     lang: []  // ["ua", "ru", "en"]
 }
 
-export let list = List;
-
-let subscriber = () => {};
-
-export const onSearch = (text) => {
-    condition.search = text;
-    filter();
-}
-
-export const onAddLang = (lang) => {
-    if (condition.lang.includes(lang)) return;
-    condition.lang.push(lang);
-    filter();
-}
-
-export const onRemoveLang = (lang) => {
-    const index = condition.lang.indexOf(lang);
-    if (index < 0) return;
-    condition.lang.splice(index, 1)
-    filter();
-}
-
-export const subscribe = (cb) => {
-    subscriber = cb;
-}
-
-const filter = () => {
-    list = [];
-
-    list = List.filter(elem => {
+function reducer (state, action) {
+    var result = List.filter(elem => {
         if (elem.lang && condition.lang.length > 0 && !condition.lang.includes(elem.lang)) {
           return false;
         }
@@ -51,6 +29,28 @@ const filter = () => {
           return false;
         } else return false;
       });
+    return { list: result } 
+}
 
-    subscriber();
+export const store = new createStore(reducer.bind(this), initialState);
+
+export const onSearch = (text) => {
+    const action = { type: "onSearch" };
+    condition.search = text;
+    store.dispatch(action);
+}
+
+export const onAddLang = (lang) => {
+    const action = { type: "onSearch" };
+    if (condition.lang.includes(lang)) return;
+    condition.lang.push(lang);
+    store.dispatch(action);
+}
+
+export const onRemoveLang = (lang) => {
+    const action = { type: "onRemoveLang" };
+    const index = condition.lang.indexOf(lang);
+    if (index < 0) return;
+    condition.lang.splice(index, 1)
+    store.dispatch(action);
 }
