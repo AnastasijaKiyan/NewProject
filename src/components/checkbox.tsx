@@ -1,18 +1,15 @@
 import React, { Fragment } from 'react'
-// import "./style.css";
-import "../style.css";
+import "../style/styles/style.css";
 
-import * as Controller from "./../controller";
+import * as Controller from "../controller";
 
 class CheckBox extends React.Component {
-  handleChecked = this.handleChecked.bind(this); // set this, because you need get methods from CheckBox 
-
-  handleChecked(e) {
+  handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) Controller.onAddLang(e.target.name);
     else Controller.onRemoveLang(e.target.name);
   }
 
-  render() {
+  render(): JSX.Element {
     // remove () after handleChecked because you need pass 
     // reference to function
     // also add return before <div>
@@ -24,7 +21,7 @@ class CheckBox extends React.Component {
     )
   }
 
-  getInput(lang) {
+  getInput(lang: string): JSX.Element {
     return <Fragment>
       <input className="checkbox" type="checkbox" name={lang} onChange={this.handleChecked} />
       <label htmlFor="rus">{lang.toUpperCase()}</label>

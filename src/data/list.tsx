@@ -1,6 +1,6 @@
-import { List } from '../contracts';
+import { IList } from '../contracts';
 
-export let Lists: List[] = [
+export let Lists: IList[] = [
     {
         "id": 0,
         "name": "Node.js",

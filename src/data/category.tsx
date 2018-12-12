@@ -1,4 +1,6 @@
-export default [
+import { ICategory } from '../contracts';
+
+export let category: ICategory[] = [
     { id: 1, name: "Official Docs" },
     { id: 2, name: "Handbooks" },
     { id: 3, name: "Manuals" },

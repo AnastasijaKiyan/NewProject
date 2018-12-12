@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import Section from "./components/section";
-import Category from "./data/category";
+import { category as Category } from "./data/category";
 import Input from "./components/input";
 import Checkbox from "./components/checkbox";
 
 import * as Controller from "./controller";
+import { IState, ICategory, IList } from './contracts';
 
-class App extends Component {
-	state = Controller.store.getState();
+class App extends Component<{}, IState> {
+	state: IState = Controller.store.getState();
 	unsubscribe = () => { };
 
-	componentDidMount() {
+	componentDidMount(): void {
 		this.unsubscribe = Controller.store.subscribe(() => {
 			this.setState(Controller.store.getState())
 		});
 	}
 
-	componentWillUnmount() {
+	componentWillUnmount(): void {
 		this.unsubscribe();
 	}
 
-	render() {
+	render(): JSX.Element {
 		return (
 			<div >
 				<div className="inputs">
@@ -29,8 +30,8 @@ class App extends Component {
 				</div>
 				<div className="App">
 					{
-						Category.map(category =>
-							<Section key={category.id} category={category.name} list={this.state.list.filter(item => item.field === category.id)} />
+						Category.map((category: ICategory): JSX.Element =>
+							<Section key={category.id} category={category.name} list={this.state.list.filter((item: IList )=> item.field === category.id)} />
 						)
 					}
 				</div>

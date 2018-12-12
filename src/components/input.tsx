@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-// import "./style.css";
-import "../style.css";
+import "../style/styles/style.css";
 
-import * as Controller from "./../controller";
+import * as Controller from "../controller";
 
 class Input extends Component {
-  onTextChanged = this.onTextChanged.bind(this);
-
-  onTextChanged(e) {
+  onTextChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     var text = e.target.value.trim();   // удаляем пробелы
     Controller.onSearch(text);
   }
